@@ -1,0 +1,217 @@
+<div *ngIf="initForm" mat-dialog-content>
+  <form [formGroup]="profileUser">
+    <div class="row form-group">
+<div class="row">
+  <div class="col-md-4">
+    <div class="card card-user">
+      <div class="image">
+        <img src="assets/img/background-user.jpg" alt="...">
+      </div>
+      <div class="card-body">
+        <div class="author">
+            <fieldset class="form-group">
+              <!-- <img class="avatar border-gray image" src="assets/img/mike.jpg" alt="..."> -->
+              <!-- <input type="file" (change)="fileChangeEvent($event)"  class="form-control " formControlName="imagenPerfil"> -->
+              <div class="custom-file fileInputProfileWrap ">
+                <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile" formControlName="imagenPerfil">
+                  <div class="img-space" >
+                      <ng-container class="div-imagen" *ngIf="isImageSaved; else elseTemplate">
+                          <img src="{{cardImageBase64}}" class="img-responsive avatar border-gray image" matTooltip="Click Aqui para cambiar tu imagen"
+                          aria-label="Button that displays a tooltip when focused or hovered over" /> 
+                      </ng-container>
+                      <ng-template #elseTemplate>
+                          <img src="{{imagenDashboard || template}}" class="img-responsive avatar border-gray image"
+                          matTooltip="Click Aqui para cambiar tu imagen"
+                          aria-label="Button that displays a tooltip when focused or hovered over">
+                      </ng-template>
+                  </div>
+                  <a class="btn btn-danger" (click)="removeImage()" *ngIf="isImageSaved">Remover</a>
+              </div>
+            </fieldset>
+           
+        </div>
+        <div class="space">
+          <p class="description text-center">
+            <br>Los Dientes
+            <br> son la unica parte del cuerpo
+            <br> Que no se puede proteger a sí misma
+          </p>
+        </div>
+          <p class="description text-center blue-color">
+            <strong><br>¡Cuídalos a Tiempo!</strong>
+          </p>  
+      </div>
+      <div class="card-footer">
+        <hr>
+        <div class="button-container">
+          <div class="row">
+            <div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-12 ml-auto mr-auto text-space">
+              <h5>Conoce mas de tu proceso
+              </h5>
+            </div>
+            <div>
+              <h5>
+                <button type="button" class="btn btn-primary mx-1 btn-sm customBtn color-btn" (click)="getHistoricClinicOfPdf()">Descargar Historia Clinica</button>
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="card card-user">
+      <div class="card-header">
+        <h3 class="card-title">Perfil de usuario</h3>
+      </div>
+      <div class="card-body">
+        <mat-stepper orientation="vertical">
+          <mat-step label="Información General">
+            <div class="row">
+              <div class="col-md-4 pl-1">
+                <div class="form-group">
+                  <label>Nombre completo</label>
+                  <input type="text" class="form-control" placeholder="Nombre completo" formControlName="fullName">
+                </div>
+              </div>
+              <div class="col-md-4 pl-1">
+                <div class="form-group">
+                  <label>Usuario</label>
+                  <input type="text"  class="form-control" placeholder="Usuario"  formControlName="UserName">
+                </div>
+              </div>
+              <div class="col-md-4 pl-1">
+                <div class="form-group">
+                  <label>Fecha de Nacimiento</label>
+                  <input type="date" class="form-control" placeholder="Ej: 10/12/2021" formControlName="dateBirth">
+                </div>
+              </div>
+              <mat-form-field appearance="fill" class="col-md-3 pl-1">
+                <mat-label>Tipos de documento</mat-label>
+                <mat-select name="typeDocumentId" formControlName="typeDocumentId">
+                  <mat-option>Ninguno</mat-option>
+                  <mat-option *ngFor="let tipo of tipoDocumentos"  [value]="tipo.id">
+                    {{tipo.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div class="col-md-4 pl-1">
+                <div class="form-group">
+                  <label>Num documento</label>
+                  <input type="text" class="form-control" placeholder="Ej: 1144789032" formControlName="document">
+                </div>
+              </div>
+              <div class="col-md-4 pl-1">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Correo electronico</label>
+                  <input type="text" class="form-control" placeholder="Email" formControlName="Email">
+                </div>
+              </div>
+              <div class="col-md-4 pl-1">
+                <div class="form-group">
+                  <label>Num Contacto</label>
+                  <input type="text" class="form-control" placeholder="Ej: 3165488574" formControlName="PhoneNumber">
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="form-group">
+                  <label>Dirección de Residencia</label>
+                  <input type="text" class="form-control" placeholder="Ej: Cll 4B #87-2" formControlName="address">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Ciudad</label>
+                  <input type="text" class="form-control" placeholder="Ej: Cali" formControlName="city" >
+                </div>
+              </div>
+            </div>
+          </mat-step>
+          <mat-step label="Información de Emergencia">
+            <div class="row">
+              <div class="col-md-4 px-1">
+                <div class="form-group">
+                  <label>Nombre</label>
+                  <input type="text" class="form-control" placeholder="Ej: Jose Luis Montaño" formControlName="contactEmergency">
+                </div>
+              </div>
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Num de emergencia</label>
+                  <input type="text" class="form-control" placeholder="Ej: 3167547458" formControlName="phoneEmergency">
+                </div>
+              </div>
+              <div class="col-md-4 px-1">
+                <div class="form-group">
+                  <label>Dirección Contacto</label>
+                  <input type="text" class="form-control" placeholder="Ej: cll 4b #85-4" formControlName="addresContact">
+                </div>
+              </div>
+              <div class="col-md-4 px-1">
+                <div class="form-group">
+                  <label>Centro de emergencia</label>
+                  <input type="text" class="form-control" placeholder="Nueva eps Sede capitolio" formControlName="centerEmergency">
+                </div>
+              </div>
+            </div>
+          </mat-step>
+          <mat-step label="Información Medica">
+            <div class="row">
+              <div class="col-md-4 pl-1">
+                <div class="form-group">
+                  <label>Eps</label>
+                  <input type="text" class="form-control" placeholder="Ej: Coomeva eps" formControlName="eps">
+                </div>
+              </div>
+              <div class="col-md-2 pl-1">
+                <div class="form-group">
+                  <label>Altura</label>
+                  <input type="text" class="form-control" placeholder="Ej: 180" formControlName="height">
+                </div>
+              </div>
+              <div class="col-md-2 pl-1">
+                <div class="form-group">
+                  <label>Peso</label>
+                  <input type="text" class="form-control" placeholder="Ej: 90" formControlName="weight">
+                </div>
+              </div>
+              <div class="col-md-2 pl-1">
+                <div class="form-group">
+                  <label>Sangre</label>
+                  <input type="text" class="form-control" placeholder="Ej: O" formControlName="bloodType">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 pl-1">
+                  <div class="form-group">
+                    <label>rh</label>
+                    <input type="text" class="form-control" placeholder="Ej: +" formControlName="rh">
+                  </div>
+                </div>
+                <div class="col-md-2 pl-1">
+                  <div class="form-group">
+                    <label>Genero</label>
+                    <input type="text" class="form-control" placeholder="Ej: M" formControlName="gender" >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-step>
+        </mat-stepper>
+        <div class="row">
+          <div class="customButtonAccions">
+            <button type="submit" class="btn btn-primary btn-round customBtn" [disabled]="profileUser.invalid" (click)="PutUserSession()"
+            >Actualizar Información</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</form>
+</div>
+
+

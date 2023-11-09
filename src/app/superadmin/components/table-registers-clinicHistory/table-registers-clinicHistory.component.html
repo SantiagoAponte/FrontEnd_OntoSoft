@@ -1,0 +1,31 @@
+<div class="customCont">
+  <div class="customHead">
+    <!-- <h1 class="customText">{{tableProps.title}}</h1> -->
+  </div>
+<div class="customScroll">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" class="customTitle">{{tableProps.firstColum}}</th>
+        <th scope="col" class="customTitle">{{tableProps.secondColum}}</th>
+        <th scope="col" class="customTitle">{{tableProps.thirdColum}}</th>
+        <th scope="col" class="customTitle">{{tableProps.fourthColum}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users[0]">
+        <td class="customItem dateColum">{{user.email}}</td>
+        <td class="customItem dateColum">{{user.username}}</td>
+        <td class="customItem ownerColum">{{user.fullName}}</td>
+        <td class="customItem accionsColum">
+          <div class="customColum">
+            <button type="button" class="btn btn-primary mx-2 btn-sm customBtn"
+              (click)="acceptRequest(user.id)" (click)="getClinicHistoryIdUser()">{{tableProps.firstBottom}}</button>
+            <button type="button" class="btn btn-danger mx-2 btn-sm customBtn"
+              (click)="cancelRequest(user.id,user.email)" (click)="getClinicHistoryIdUser()">{{tableProps.secondBottom}}</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

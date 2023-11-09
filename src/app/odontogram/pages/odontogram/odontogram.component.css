@@ -1,0 +1,299 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    margin-left: 2%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+.customSearch:disabled{
+ opacity: 0.4;
+}
+.customRow{
+    padding-left: 5%;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-column-gap: 3em;
+    grid-row-gap: 3em;
+}
+.customNew{
+    display: grid;
+    grid-template-columns: 75% 20%;
+    position: relative;
+    grid-column-gap: 1em;
+}
+.customInput{
+    margin-left: 2%;
+    width: 30%;
+    border: solid 1px rgb(0, 0, 0);
+    border-radius: 6px;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: 0.1fr 0.01fr 0.1fr;
+    grid-template-rows: repeat(6, 0.01fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+    
+    }  
+    .div1 { 
+        margin-top: 15%;
+        padding-left: 0%;
+        grid-area: 1 / 1 / 2 / 2;
+         }
+    .div2 {
+         margin-top: 15%;
+         padding-right: 0%;
+         grid-area: 1 / 3 / 2 / 4;
+        }
+    .div3 { 
+        margin-bottom: 2%;
+        padding-left: 37%;
+        /* margin-bottom: 15%; */
+        grid-area: 3 / 1 / 4 / 2; 
+    }
+    .div4 { 
+        margin-bottom: 2%;
+        padding-right: 37%;
+        /* margin-bottom: 15%; */
+        grid-area: 3 / 3 / 4 / 4; 
+    }
+    .div5 { 
+        margin-bottom: 2%;
+        padding-left: 37%;
+        /* margin-bottom: 15%; */
+        grid-area: 4 / 1 / 5 / 2;
+     }
+    .div6 { 
+        margin-bottom: 2%;
+        /* margin-bottom: 15%; */
+        grid-area: 4 / 3 / 5 / 4; 
+        padding-right: 37%;
+    }
+    .div7 { 
+        margin-bottom: 0%;
+        padding-left: 0%;
+        grid-area: 6 / 1 / 7 / 2;
+     }
+    .div8 { 
+        padding-right: 0%;
+        grid-area: 6 / 3 / 7 / 4;
+     }
+    .div9 {
+        grid-area: 1 / 2 / 7 / 3;
+     }
+    .div10 { 
+       
+        grid-area: 2 / 1 / 3 / 4;
+     }
+    .div11 { grid-area: 5 / 1 / 6 / 4; }
+  
+  
+.customPositionPage{
+    writing-mode: vertical-lr;
+}
+    
+.customText{
+    padding-top: 2%;
+    font-weight: 500;
+    justify-self: center;
+    align-content: center;
+}
+.positionRegister {
+    grid-area: 7 / 5 / 7 / 3;
+    grid-template-columns: 1fr;
+    grid-template-rows:  1fr;
+    margin-top: 10%;
+}
+.positionList {
+    grid-area: 7 / 3 / 7 / 1;
+    grid-template-columns: 1fr;
+    grid-template-rows:  1fr;
+}
+/* .customButtonAccions{
+    text-align: left;
+} */
+.customPosition{
+    /* resize: 100px; */
+    width: 380px;
+}
+.customText{
+    /* margin-right: 5%; */
+    font-size: 20px;
+    font-weight: 500;
+    /* justify-self: center;
+    align-content: center; */
+    border: none;
+}
+.customTextArea{
+    border:solid 1px rgb(0, 0, 0);
+}
+.customButton{
+    margin: 2%;
+}
+.customButtonSubmit{
+    background-color: #1178ac !important; 
+}
+
+.boxCircle1{
+    width: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #ffa200;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;  
+}
+.boxCircle2{
+    width: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #942529;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;  
+}
+.boxCircle3{
+    width: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #ff0000;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;  
+}
+.boxCircle4{
+    width: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #fbff00;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;  
+}
+.boxCircle5{
+    width: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #cc00ff; 
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;  
+}
+.boxCircle6{
+    width: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #00f7ff;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;  
+}
+.boxCircle7{
+    width: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #1eff00;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;  
+}
+.boxCircle8{
+    width: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #7700ff;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;  
+}
+.boxCircle9{
+    width: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #ff00dd;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;  
+}
+.boxCircle10{
+    width: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #4c4bad;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;  
+}
+.boxCircle11{
+    width: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #127043;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;  
+}
+.boxCircle12{
+    width: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #524f4f;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;  
+}
+
+
+@media (max-width: 1000px) {
+    .customContent{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 100% 40%;
+        height: 200%;
+    }
+
+    .customDisplay{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 25% 25% 25% 25%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .customContent{
+        display: grid;
+        grid-template-rows: 100% 40%;
+    }
+}

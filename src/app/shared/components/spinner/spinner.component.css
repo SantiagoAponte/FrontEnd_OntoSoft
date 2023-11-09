@@ -1,0 +1,38 @@
+.backgroundSpinner{
+  position: absolute;
+  background-color: rgba(190, 207, 238, 0.8) !important;
+  /* background-color: rgba(74, 74, 74, .8) !important; */
+  width: 100%;
+  height: 100%;
+}
+.containerSpinner{
+  position: absolute;
+  margin-top: 20%;
+  margin-left: 45%;
+  z-index: 10;
+}
+.overlay {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border-left-color: #09f;
+  animation: spin 1s ease infinite;
+} 
+ @keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.overlayText{
+  font-size:  large;
+  margin-left: 3%;
+  color: black;
+  position: absolute;
+  margin-top: 51px;
+  margin-left: 20px;
+}

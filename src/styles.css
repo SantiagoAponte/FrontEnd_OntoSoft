@@ -1,0 +1,95 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* .fc-dayGridMonth-button{ 
+    color: black ;
+    background-color: white !important;
+    
+  } */
+.fc-today-button:disabled{
+background-color: var(--fc-today-button,#2199D5) !important;
+}
+.fc-today-button:enabled{
+    background-color: var(--fc-today-button,#2199D5) !important;
+    }
+
+.fc-button{ 
+    color: var(--fc-button-text-color,#fff) !important;
+    background-color: var(--fc-button-active-bg-color,#2199D5) !important;
+    border-color: var(--fc-button-active-border-color,black) !important;
+  }
+  .fc-event-main{
+   background-color: #4FB483 ;
+  }
+  .fc-event-title{
+    color: var(--fc-event-text-color,black); 
+    font-weight: 550; 
+  }
+  a {
+    color: black;
+    text-decoration: underline;
+}
+.fc-daygrid-event-dot{
+border: calc(var(--fc-daygrid-event-dot-width, 8px) / 2) solid var(--fc-event-border-color,#4FB483) !important;
+}
+.fc-list-event-dot{
+    border: calc(var(--fc-daygrid-event-dot-width, 8px) / 2) solid var(--fc-event-border-color,#4FB483) !important;
+}
+.fc-daygrid-event-dot:disabled{
+    border: calc(var(--fc-daygrid-event-dot-width, 8px) / 2) solid var(--fc-event-border-color,#ff0000) !important;
+}
+.fc-list-event-dot:disabled{
+        border: calc(var(--fc-daygrid-event-dot-width, 8px) / 2) solid var(--fc-event-border-color,#ff0000) !important;
+}
+.fc-event-title-container {
+  background-color: white !important;
+}
+.fc-event-title-container > .fc-event-title{
+  color: black;
+  font-weight: bolder;
+}
+.fc-event-main-frame > .fc-event-time{
+  color: white !important;
+}
+.fc-toolbar-title{
+  text-transform: capitalize;
+}
+
+.fc-col-header-cell-cushion:hover{
+  color: black;
+  cursor: context-menu;
+}
+.fc-col-header-cell-cushion{
+  color: black;
+  text-transform: capitalize;
+}
+
+.fc-col-header-cell{
+  background-color: #E1E1E1;
+}
+.fc-daygrid-event-dot{
+  border: calc(var(--fc-daygrid-event-dot-width, 8px) / 2) solid var(--fc-event-border-color,#4FB483) !important;
+}
+.fc-event-time{
+  color: black !important;
+}
+
+.fc-daygrid-day-number{
+  text-decoration: none;
+  color: black !important;
+}
+
+.fc-day-today{
+  background-color: #e3e7fa !important;
+  border-bottom: #e3e7fa solid !important;
+}
+/* .fc-day-sun{
+  display: none;
+} */
+/* .fc-daygrid-day{
+    background-color: rgba(255, 220, 40, 15);
+    background-color: var(--fc-today-bg-color,rgba(255, 220, 40, 15));
+} */
+

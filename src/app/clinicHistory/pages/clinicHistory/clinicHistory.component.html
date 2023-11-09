@@ -1,0 +1,278 @@
+<h1 class="blockquote text-center customText">Historia Clinica</h1>
+<form class="example-form" >
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Seleccione un Paciente</mat-label>
+    <input type="text"placeholder="Elige Uno" matInput [formControl]="myControl" 
+    [matAutocomplete]="auto"> 
+<mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn2(pacientes)">
+  <mat-option *ngFor="let option of filteredOptions | async" [value]="option.id" (click)="saveIdUser()" (click)="getDetailsIdUser()" (click)="getClinicHistoryIdUser()">
+    {{option.fullName}}
+  </mat-option>
+</mat-autocomplete>
+</mat-form-field>
+</form>
+    <mat-stepper>
+      <mat-step  label="Información General">
+        <div mat-dialog-content>
+          <form [formGroup]="infoGeneralForm">
+            <div class="parent" *ngFor="let detail of detailsUser">
+              <div class="div1"> 
+                <div class="customFormDate">
+                  <div class="mb-3 customInput">
+                    <label class="form-label">Fecha:</label>
+                    <input type="date" class="form-control" formControlName="date">
+                  </div>
+                </div>
+              </div>
+              <div class="div2"> 
+                <div class="customFormDate">
+                  <div class="mb-3 customInput">
+                    <label class="form-label">Hora:</label>
+                    <input type="time" class="form-control" formControlName="hour">
+                  </div>
+                </div>
+              </div>
+              <div class="div3"> 
+                <div class="mb-3 customInput">
+                  <label class="form-label">Nombre Completo:</label>
+                  <textarea class="form-control" disabled [value]="detail.fullName" rows="1"></textarea>
+                </div>
+              </div>
+              <div class="div4">
+                <div class="mb-3 customInput">
+                  <label class="form-label">Tipo de Documento:</label>
+                  <textarea class="form-control" disabled [value]="detail.typeDocumentId" rows="1"></textarea>
+                </div> 
+                <!-- <mat-form-field appearance="fill">
+                  <mat-label>Tipo de documento</mat-label>
+                   <mat-select name="typeDocument" [value]="detail.typeDocumentId">
+                   <mat-option>Ninguno</mat-option>
+                    <mat-option *ngFor="let typeDocument of detailsUser">
+                   
+                    </mat-option>
+                    </mat-select>
+                    </mat-form-field> -->
+              </div>
+          
+              <div class="div5"> 
+                <div class="mb-3 customInput">
+                  <label class="form-label">Numero de documento</label>
+                  <textarea  class="form-control" disabled  [value]="detail.document" rows="1" ></textarea>
+                </div>
+              </div>
+              <div class="div6"> 
+                <div class="mb-3 customInput">
+                  <label class="form-label">Sexo</label>
+                  <textarea class="form-control" disabled [value]="detail.gender" rows="1"></textarea>
+                </div>
+              </div>
+              <div class="div7"> 
+                <div class="mb-3 customInput">
+                  <label class="form-label">Fecha de nacimiento</label>
+                  <!-- <input type="date" disabled class="form-control" [value]="detail.dateBirth"> -->
+                  <textarea class="form-control" disabled [value]="detail.dateBirth" type="date" rows="1"></textarea>
+                </div>
+              </div>
+              <div class="div8"> 
+                <div class="mb-3 customInput">
+                  <label class="form-label">Tipo de sangre</label>
+                  <textarea  class="form-control" disabled [value]="detail.bloodType" rows="1"></textarea>
+                </div>
+              </div>
+              <div class="div9"> 
+                <div class="mb-3 customInput">
+                  <label class="form-label">RH</label>
+                  <textarea  class="form-control" disabled [value]="detail.rh" rows="1"></textarea>
+                </div>
+                <!-- <mat-form-field appearance="fill">
+                  <mat-label>Tipo de sangre</mat-label>
+                   <mat-select name="typeBlood">
+                   <mat-option>Ninguno</mat-option>
+                    <mat-option *ngFor="let typeBlood of pacientes" [value]="typeBlood.id">
+                     {{typeBlood.fullName}}
+                    </mat-option>
+                    </mat-select>
+                    </mat-form-field> -->
+              </div>
+              <div class="div10"> 
+                <div class="mb-3 customInput">
+                  <label class="form-label">Altura</label>
+                  <textarea  class="form-control" disabled [value]="detail.height" rows="1"></textarea>
+                </div>
+              </div>
+              <div class="div11"> 
+                <div class="mb-3 customInput">
+                  <label class="form-label">Peso</label>
+                  <textarea  class="form-control" disabled [value]="detail.weight" rows="1"></textarea>
+                </div>
+              </div>
+              <div class="div12"> 
+                <div class="mb-3 customInput">
+                  <label class="form-label">Dirección y Ciudad de Residencia</label>
+                  <textarea class="form-control" disabled [value]="detail.address" rows="1"></textarea>
+                </div>
+              </div>
+              <div class="div13"> 
+                <div class="mb-3 customInput">
+                  <label class="form-label">Telefono</label>
+                  <textarea class="form-control" disabled [value]="detail.phoneNumber" rows="1"></textarea>
+                </div>
+              </div>
+              <div class="div14"> 
+                <div class="mb-3 customInput">
+                  <label class="form-label">EPS:</label>
+                  <textarea class="form-control" disabled [value]="detail.eps" rows="1" ></textarea>
+                </div>
+              </div>
+              <div class="div15"> 
+                <div class="mb-3 customInput">
+                  <label class="form-label">Centro Asistencial:</label>
+                  <textarea class="form-control" disabled [value]="detail.centerEmergency" rows="1"></textarea>
+                </div>
+              </div>
+              <div class="div16">  
+
+              </div>
+              <div class="div17"> 
+                <div class="mb-3 customInput">
+                  <label class="form-label">Ciudad</label>
+                  <textarea class="form-control"  disabled [value]="detail.city" rows="1"></textarea>
+                </div>
+              </div>
+              <div class="div18">
+                <div class="mb-3 customInput">
+                  <label class="form-label">Nombre de acompañante:</label>
+                  <textarea class="form-control" rows="1" formControlName="nameCompanion"></textarea>
+                </div> 
+                
+              </div>
+              <div class="div19"> 
+                <div class="mb-3 customInput">
+                  <label class="form-label">Telefono de acompañante:</label>
+                  <textarea class="form-control" rows="1" formControlName="phoneCompanion"></textarea>
+                </div>
+               
+            </div>
+              <div class="div20"> </div>
+              </div>   
+            <!-- <div class="mb-3 customInput">
+              <label class="form-label">Peso</label>
+              <textarea  class="form-control" rows="1"></textarea>
+            </div> -->
+          </form>
+          </div>
+        <div>
+          <button class="btn btn-success" matStepperNext>Guardar y Siguiente</button>
+        </div>
+      </mat-step>
+      <mat-step label="Antecedentes medicos y odontologicos generales">
+        <div>
+        <form [formGroup]="backgroundsForm">
+          <div class="customBackground">
+            <div class="backgroundMedical">
+                <p>
+                 ¿Tienes Antecedentes Medicos? <mat-checkbox class="customCheck" formControlName="disableSelectMedical">No</mat-checkbox>
+                 <!-- <mat-checkbox class="customCheck" formControlName="disableSelectMedical">No</mat-checkbox> -->
+                </p> 
+              <h3 class="blockquote text-center customText">Antecedentes Medicos</h3>
+              <div>
+                <mat-selection-list  #antecedenteMedico formControlName="backgroundMedicals" [disabled]="this.backgroundsForm.value.disableSelectMedical">
+                  <mat-list-option *ngFor="let antecedenteMedico of ListbackgroundMedicals" [value]="antecedenteMedico.id" >
+                    {{antecedenteMedico.description}}
+                  </mat-list-option>
+                </mat-selection-list>
+                <p>
+                  Cantidad de Opciones seleccionadas: {{antecedenteMedico.selectedOptions.selected.length}}
+                </p>
+              </div>   
+            </div>
+            <div class="backgroundOral">
+              <p>
+                ¿Tienes Antecedentes Orales?   <mat-checkbox class="customCheck" formControlName="disableSelectOral">No</mat-checkbox>
+               </p> 
+              <h3 class="blockquote text-center customText">Antecedentes Orales</h3> 
+              <div>
+                <mat-selection-list #antecedenteOral formControlName="backgroundOrals" [disabled]="this.backgroundsForm.value.disableSelectOral">
+                  <mat-list-option *ngFor="let antecedenteOral of ListbackgroundOrals" [value]="antecedenteOral.id">
+                    {{antecedenteOral.description}}
+                  </mat-list-option>
+                </mat-selection-list>
+                <p>
+                  Cantidad de Opciones seleccionadas: {{antecedenteOral.selectedOptions.selected.length}}
+                </p>
+              </div>
+            </div>
+            </div>
+        </form>
+      </div>
+        <div>
+          <button class="btn btn-danger customButton" matStepperPrevious>Anterior</button>
+          <button class="btn btn-success" matStepperNext (click)="postClinicHistory()">Guardar y Siguiente</button>
+        </div>
+      </mat-step>
+      <mat-step label="Registro de radiografias">
+        <div mat-dialog-content>
+          <form [formGroup]="radiographiesForm">
+            <div class="customFormDate">
+              <div class="mb-3 customInput2">
+                <label class="form-label">Fecha:</label>
+                <input type="date" class="form-control" formControlName="date2">
+              </div>
+              <div class="mb-3 customInput2">
+                <label class="form-label">Hora:</label>
+                <input type="time" class="form-control" formControlName="hour2">
+              </div>
+            </div>
+            <div class="mb-3 customInput2">
+              <label class="form-label">Observación:</label>
+              <textarea class="form-control" rows="4" formControlName="observation"></textarea>
+            </div>
+          </form>
+        </div>
+        <div>
+          <button class="btn btn-danger customButton" matStepperPrevious>Anterior</button>
+          <button class="btn btn-success" matStepperNext (click)="postOralRadiography()">Guardar y Siguiente</button>
+        </div>
+        <mat-step label="Registro de plan">
+          <div mat-dialog-content>
+            <form [formGroup]="treamentPlanForm">
+              <div class="mb-3 customInput2">
+                <label class="form-label">Nombre Plan de tratamiento:</label>
+                <textarea class="form-control" rows="1" formControlName="Name"></textarea>
+              </div>
+              <div class="mb-3 customInput2">
+                <label class="form-label">Observación:</label>
+                <textarea class="form-control" rows="4" formControlName="observation"></textarea>
+              </div>
+            </form>
+          </div>
+          <div>
+            <button class="btn btn-danger customButton"  matStepperPrevious>Anterior</button>
+            <button class="btn btn-success" matStepperNext (click)="postTreamentPlan()">Guardar y Siguiente</button>
+          </div>
+        </mat-step>
+      </mat-step>
+      <mat-step label="Registro de evoluciónes">
+        <div mat-dialog-content>
+          <form [formGroup]="evolutionForm">
+            <div class="customFormDate">
+              <div class="mb-3 customInput2">
+                <label class="form-label">Fecha:</label>
+                <input type="date" class="form-control" formControlName="date3">
+              </div>
+              <div class="mb-3 customInput2">
+                <label class="form-label">Hora:</label>
+                <input type="time" class="form-control" formControlName="hour3">
+              </div>
+            </div>
+            <div class="mb-3 customInput2">
+              <label class="form-label">Observación:</label>
+              <textarea class="form-control" rows="4" formControlName="observation"></textarea>
+            </div>
+          </form>
+          </div>
+          <div>
+            <button class="btn btn-success customPosition-" (click)="postPatientEvolution()">Guardar</button>
+          </div>
+      </mat-step>
+    </mat-stepper>

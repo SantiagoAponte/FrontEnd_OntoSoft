@@ -1,0 +1,124 @@
+<h1 class="blockquote text-center customText">Odontograma</h1>
+<!-- <div class="customGrid">
+  <div class="customCard">  -->
+    <form class="example-form" >
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Seleccione un Paciente</mat-label>
+        <input type="text"placeholder="Elige Uno" matInput [formControl]="myControl" 
+        [matAutocomplete]="auto"> 
+    <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn2(pacientes)">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option.id" (click)="saveIdUser()" (click)="getClinicHistoryIdUser()" >
+        {{option.fullName}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  </form>
+    <!-- <form class="example-form" >
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Seleccione un Paciente</mat-label>
+        <input type="text"placeholder="Elige Uno" matInput [formControl]="myControl" 
+        [matAutocomplete]="auto"> 
+       
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" >
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option.fullName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form> -->
+  
+    <div class="parent">
+    <div class="div1 customPositionPage">
+      <ng-container *ngFor="let tooth of tooths1[0]">
+        <app-tooth  [tooth]=tooth></app-tooth>
+      </ng-container>
+    </div>
+    <div class="div2 customPositionPage">
+      <ng-container *ngFor="let tooth of tooths2[0]">
+        <app-tooth [tooth]=tooth></app-tooth>
+      </ng-container>
+    </div>
+    <div class="div3 customPositionPage">
+      <ng-container *ngFor="let tooth of tooths3[0]">
+        <app-tooth [tooth]=tooth></app-tooth>
+      </ng-container>
+    </div>
+    <div class="div4 customPositionPage">
+      <ng-container *ngFor="let tooth of tooths4[0]">
+        <app-tooth [tooth]=tooth></app-tooth>
+      </ng-container>
+    </div>
+    <div class="div5 customPositionPage">
+      <ng-container *ngFor="let tooth of tooths5[0]">
+        <app-tooth [tooth]=tooth></app-tooth>
+      </ng-container>
+    </div>
+    <div class="div6 customPositionPage">
+      <ng-container *ngFor="let tooth of tooths6[0]">
+        <app-tooth [tooth]=tooth></app-tooth>
+      </ng-container>
+    </div>
+    <div class="div7 customPositionPage">
+      <ng-container *ngFor="let tooth of tooths7[0]">
+        <app-tooth [tooth]=tooth></app-tooth>
+      </ng-container>
+    </div>
+    <div class="div8 customPositionPage">
+      <ng-container *ngFor="let tooth of tooths8[0]">
+        <app-tooth [tooth]=tooth></app-tooth>
+      </ng-container>
+    </div>
+    <div class="div9">
+      <svg width="10" height="420" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <line stroke="#000" fill="none" stroke-width="5" x1="3" y1="089.99998" x2="3" y2="526" id="svg_10"
+            stroke-linejoin="undefined" stroke-linecap="undefined" />
+        </g>
+      </svg>
+    </div>
+    <div class="div10">
+      <svg width="1350" height="10" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <line stroke-width="5" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_1" y2="563" x2="364"
+            y1="37" x1="362" stroke="#000" fill="none" />
+          <line stroke="#000" fill="none" x1="5" y1="55" x2="5" y2="559" id="svg_2" stroke-linejoin="undefined"
+            stroke-linecap="undefined" stroke-width="8" />
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_8" y2="5.5" x2="1240.00008"
+            y1="4.5" x1="110.0099" stroke-width="5" fill="none" />
+        </g>
+      </svg>
+    </div>
+    <div class="div11">
+      <svg width="1170" height="10" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <line stroke-width="5" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_1" y2="563" x2="364"
+            y1="37" x1="362" stroke="#000" fill="none" />
+          <line stroke="#000" fill="none" x1="5" y1="55" x2="5" y2="559" id="svg_2" stroke-linejoin="undefined"
+            stroke-linecap="undefined" stroke-width="8" />
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_8" y2="5.5" x2="1150.00008"
+            y1="4.5" x1="20.0000" stroke-width="5" fill="none" />
+        </g>
+      </svg>
+    </div>
+  <mat-list role="list" class="positionList">
+    <mat-list-item role="listitem">
+      <input class="boxCircle1" type="text" disabled="disabled">Endodoncia
+      <input class="boxCircle2" type="text" disabled="disabled">Ausencia
+      <input class="boxCircle3" type="text" disabled="disabled">Caries
+      <input class="boxCircle4" type="text" disabled="disabled">Corona
+      <input class="boxCircle5" type="text" disabled="disabled" >Resina
+      <input class="boxCircle6" type="text" disabled="disabled">Implante
+    </mat-list-item>
+    <mat-list-item role="listitem" class="positionList">
+      <input class="boxCircle7" type="text" disabled="disabled">Diente Sano
+      <input class="boxCircle8" type="text" disabled="disabled">Amalgama
+      <input class="boxCircle9" type="text" disabled="disabled">Sellante
+      <input class="boxCircle10" type="text" disabled="disabled">Provisional
+      <input class="boxCircle11" type="text" disabled="disabled">Extraccion indicada
+      <input class="boxCircle12" type="text" disabled="disabled">Otros
+    </mat-list-item>
+  </mat-list>
+  <div class="positionRegister">
+    <app-form-register [formRegister]></app-form-register>
+  </div>
+</div>

@@ -1,0 +1,163 @@
+.tamañoImage{
+    margin-left: 30%;
+    width: 40%;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-content: center;
+}
+.author{
+    width: 100% !important;
+}
+.image{
+    border-radius: 100px !important;
+}
+.countInput{
+    float: right;
+    font-weight: bolder;
+}
+.container {
+    display: grid;
+    grid-template-columns: 100px;
+    grid-template-rows: 150px;
+    gap: 60px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "customSelect";
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      justify-content: center;
+      padding-right: 30%;
+  }
+  
+  .customTextArea{
+    border:solid 3px rgb(0, 0, 0);
+}
+  .customSelect { grid-area: customSelect; }
+  
+  .customColor { 
+      margin-top: 5%;   
+      width: 10%;
+      height: 15%;
+     }
+  
+  
+.divTable{
+	display: table;
+	width: 100%;
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divTableHeading {
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+.customButtonAccions{
+    text-align: center;
+
+}
+.customButton{
+    margin: 2%;
+}
+.customButtonSubmit{
+    background-color: #2199D5 !important;
+}
+.customButtonClear {
+ background-color: #2199D5 !important;
+}
+
+.customFormDate{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.customInput{
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.customCheck{
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.customRoom{
+    width: 50% !important;
+}
+
+.customSwitch{
+    width: 32px;
+    height: 17px;
+}
+.customLabel{
+    padding-left: 1%;
+    padding-top: 2px;
+}
+
+.customUpload{
+    padding-right: 10%;
+    padding-left: 5%;
+    justify-content: center;
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: 15% 85%;
+}
+
+.customInputFile{
+    width: 100%;
+}
+
+.customIcon{
+    align-self: center;
+    justify-self: end;
+    position: relative;
+}
+
+.popover__wrapper {
+    align-self: center;
+    justify-self: end;
+    position: relative;
+}
+
+.popover__content {
+    opacity: 0;
+    position: absolute;
+    bottom: 20px;
+    transform: translate(0, 10px);
+    background-color: white;
+    border-radius: 10px;
+    border: solid;
+    /* padding: 1.5rem; */
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    width: 200px;
+}
+
+.popover__wrapper:hover .popover__content {
+    z-index: 10;
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, -20px);
+    transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+}
+.popover__message {
+    text-align: center;
+    margin-bottom: 0%;
+}
+@media (max-width: 900px) {
+    .customRoom{
+        width: 100% !important;
+    }
+}

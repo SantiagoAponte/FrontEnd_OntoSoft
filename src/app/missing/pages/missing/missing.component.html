@@ -1,0 +1,32 @@
+<div class="cover">
+  <div class="missing-page">
+    <div class="head">
+      <img class="imgont" src="/assets/LogoOnto.png" alt="" />
+      <p class="text-center">Recupera tu constrase&ntilde;a.</p>
+      <hr class="hr" />
+      <p>
+        Coloca aqu&iacute; tu correo para buscar tu usuario y <br />
+        enviarte un correo de recuperacion de contrase&ntilde;a:
+      </p>
+    </div>
+    <div class="content">
+      <div class="content_mail">
+        <mat-card class="mat-elevation-z12">
+          <form [formGroup]="formMissing" (submit)="send()">
+            <mat-form-field>
+              <input matInput placeholder="Correo" formControlName="email" />
+              <mat-error>Correo obligatorio</mat-error>
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="login-button" type="submit" [disabled]="formMissing.invalid">
+              Enviar correo de recuperaci&oacute;n
+            </button>
+            <br>
+            <br>
+          </form>
+          <a class="text-center-down" href="/login">Iniciar sesi&oacute;n/Registrarte</a>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

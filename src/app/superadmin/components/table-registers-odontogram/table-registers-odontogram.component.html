@@ -1,0 +1,44 @@
+<div class="customCont">
+  <div class="customHead">
+    <form class="example-form" >
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Seleccione un Paciente</mat-label>
+        <input type="text"placeholder="Elige Uno" matInput [formControl]="myControl" 
+        [matAutocomplete]="auto"> 
+    <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn2(pacientes)">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option.id" (click)="saveIdUser()" (click)="getOdontogramWithUser()" (click)="getClinicHistoryIdUser()">
+        {{option.fullName}}
+      </mat-option>
+    </mat-autocomplete>
+    </mat-form-field>
+    </form>
+    <!-- <h1 class="customText">{{tableProps.title}}</h1> -->
+  </div>
+  <div class="customScroll">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" class="customTitle">{{tableProps.firstColum}}</th>
+          <th scope="col" class="customTitle">{{tableProps.secondColum}}</th>
+          <th scope="col" class="customTitle">{{tableProps.thirdColum}}</th>
+          <th scope="col" class="customTitle">{{tableProps.fourthColum}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let register of registers">
+          <td class="customItem dateColum">{{register.id}}</td>
+          <td class="customItem dateColum">{{register.date_register}}</td>
+          <td class="customItem ownerColum">{{register.observation}}</td>
+          <td class="customItem accionsColum">
+            <div class="customColum">
+              <button type="button" class="btn btn-primary mx-2 btn-sm customBtn"
+                (click)="acceptRequest(register.id)">{{tableProps.firstBottom}}</button>
+              <button type="button" class="btn btn-danger mx-2 btn-sm customBtn"
+                (click)="cancelRequest(register.id)">{{tableProps.secondBottom}}</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+import { Guid } from "guid-typescript";
+
+export interface taskgetUserRol {
+    
+        id: Guid,
+        fullName: string,
+        phoneNumber: string,
+        phoneEmergency: string
+        contactEmergency: string,
+        addresContact: string,
+        centerEmergency: string,
+        eps: string,
+        dateBirth: Date,
+        city: string,
+        address: string,
+        gender: string,
+        document: string,
+        height: string,
+        weight: string,
+        rh: string,
+        bloodType: string,
+        appoinmentsLink: any,
+        typeDocumentId: string,
+        odontogram: any,
+        typeDocument: any,
+        clinicHistory: any,
+        userName: string,
+        normalizedUserName: string,
+        email: string,
+        normalizedEmail: string,
+        emailConfirmed: boolean,
+        passwordHash: string,
+        securityStamp: any,
+        concurrencyStamp: any,
+        phoneNumberConfirmed: boolean,
+        twoFactorEnabled: boolean,
+        lockoutEnd: any,
+        lockoutEnabled: boolean,
+        accessFailedCount: number
+}

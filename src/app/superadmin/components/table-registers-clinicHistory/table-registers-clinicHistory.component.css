@@ -1,0 +1,105 @@
+.customText{
+    font-weight: 500;
+    justify-self: center;
+    margin-bottom: 0;
+    text-transform: capitalize;
+}
+
+table{
+    width: 100%;
+}
+
+.customTitle{
+    text-align: center;
+    font-weight: bold !important;
+    color: black;
+    font-size: large;
+    justify-self: center;
+    text-transform: capitalize;
+}
+
+.accionsColum{
+    text-align: center;
+    width: 25%;
+    text-transform: capitalize;
+}
+
+.roleColum{
+    text-align: center;
+    width: 25%;
+    padding: 0 !important;
+}
+
+.customItem{
+    font-size: medium;
+    color: black;
+    
+}
+
+.dateColum{
+    text-align: center;
+    width: 30%;
+    
+}
+
+.ownerColum{
+    text-align: center;
+    width: 30%;
+   
+}
+
+.customBtn{
+    padding: 2%;
+    text-transform: capitalize;
+}
+
+.customCont{
+    padding: 5%;
+    border-radius: 10px;
+    display: grid;
+    height: 1100px;
+    grid-template-rows: 5% 95%;
+    -webkit-box-shadow: 0px 5px 5px -1px rgba(32, 32, 32, 0.48);
+    -moz-box-shadow: 0px 5px 5px -1px rgba(32, 32, 32, 0.48);
+    box-shadow: 0px 5px 5px -1px rgba(32, 32, 32, 0.48);
+}
+
+.customScroll{
+    overflow-y: scroll;
+    border-bottom: solid #ccc 1px;
+}
+
+.customScroll::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+}
+
+.customScroll::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.customScroll::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.customScroll::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+}
+
+.customScroll::-webkit-scrollbar-track {
+    background: white;
+    border-radius: 4px;
+}
+
+.customScroll::-webkit-scrollbar-track:hover,
+.customScroll::-webkit-scrollbar-track:active {
+  background: #d4d4d4;
+} 
+
+@media (max-width: 600px) {
+    .customBtn{
+        margin: 5%;
+    }
+}

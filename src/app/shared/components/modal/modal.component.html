@@ -1,0 +1,533 @@
+<!-- MODAL PARA CREAR LA CITA -->
+<div *ngIf="createAppoinment" class="customCard">
+  <h2 mat-dialog-title class="customTitle">{{TitleOnlyForm}}</h2>
+  <div mat-dialog-content>
+    <form [formGroup]="ModalForm">
+      <div class="customFormDate">
+        <div class="mb-3 customInput">
+          <label class="form-label">Fecha:</label>
+          <input type="date" class="form-control" formControlName="date">
+        </div>
+        <div class="mb-3 customInput">
+          <label class="form-label">Hora:</label>
+          <input type="time" class="form-control" formControlName="hour">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Titulo de cita:</label>
+        <textarea class="form-control" rows="1" formControlName="Title"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Observación:</label>
+        <textarea class="form-control" rows="4" formControlName="Text"></textarea>
+      </div>
+      <div class="divTable">
+        <div class="divTableBody">
+          <div class="divTableRow">
+            <div class="divTableCell">
+              <h4>Seleccione un Paciente</h4>
+              <mat-form-field appearance="fill">
+                <mat-label>Pacientes</mat-label>
+                <mat-select name="Paciente" id="numero" formControlName="Paciente">
+                  <mat-option>Ninguno</mat-option>
+                  <mat-option *ngFor="let paciente of pacientes" [value]="paciente.id">
+                    {{paciente.fullName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="divTableCell">
+              <h4>Seleccione un Doctor</h4>
+              <mat-form-field appearance="fill">
+                <mat-label>Doctores</mat-label>
+                <mat-select name="Doctor" formControlName="Doctor">
+                  <mat-option>Ninguno</mat-option>
+                  <mat-option *ngFor="let doctor of doctores" [value]="doctor.id">
+                    {{doctor.fullName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="customButtonAccions">
+        <button class="btn btn-danger customButton" (click)="close()">Cancelar</button>
+        <button type="submit" [disabled]="ModalForm.invalid" class="btn btn-success customButton customButtonSubmit"
+          (click)="onSubmitForm('createAppoinment')">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- DISEÑO DE MODAL PARA ELIMINAR O ACTUALIZAR LA INFORMACIÒN DE LA CITA -->
+<div *ngIf="editAppoinment" class="customCard">
+  <h2 mat-dialog-title class="customTitle">{{TitleOnlyForm}}</h2>
+  <div mat-dialog-content>
+    <form [formGroup]="ModalForm">
+      <div class="customFormDate">
+        <div class="mb-3 customInput">
+          <label class="form-label">Fecha:</label>
+          <input type="date" class="form-control" formControlName="date">
+        </div>
+        <div class="mb-3 customInput">
+          <label class="form-label">Hora:</label>
+          <input type="time" class="form-control" formControlName="hour">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Titulo de cita:</label>
+        <textarea class="form-control" rows="1" formControlName="Title"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Observación:</label>
+        <textarea class="form-control" rows="4" formControlName="Text"></textarea>
+      </div>
+      <p> <strong>Cita asignada al doctor: </strong> {{person}} <strong> y al paciente: </strong> {{person2}}</p>
+      <div class="divTable">
+        <div class="divTableBody">
+          <div class="divTableRow">
+            <div class="divTableCell">
+              <h4>Seleccione un Paciente</h4>
+              <mat-form-field appearance="fill">
+                <mat-label>Pacientes</mat-label>
+                <mat-select name="Paciente" formControlName="Paciente">
+                  <mat-option>Ninguno</mat-option>
+                  <mat-option *ngFor="let paciente of pacientes" [value]="paciente.id">
+                    {{paciente.fullName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="divTableCell">
+              <h4>Seleccione un Doctor</h4>
+              <mat-form-field appearance="fill">
+                <mat-label>Doctores</mat-label>
+                <mat-select name="Doctor" formControlName="Doctor">
+                  <mat-option>Ninguno</mat-option>
+                  <mat-option *ngFor="let doctor of doctores" [value]="doctor.id">
+                    {{doctor.fullName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="customButtonAccions">
+        <button type="submit" class="btn btn-primary customButton customButtonSubmit"
+          (click)="onSubmitForm('editAppoinment')">Actualizar</button>
+        <button class="btn btn-danger customButton" (click)="onSubmitForm('delete')">Eliminar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- DISEÑO DE MODAL PARA VER LA INFORMACIÒN DE UNA CITA PARA PACIENTE -->
+<div *ngIf="viewAppoinment" class="customCard">
+  <h2 mat-dialog-title class="customTitle">{{TitleOnlyForm}}</h2>
+  <div mat-dialog-content>
+    <form [formGroup]="ModalForm">
+      <div class="customFormDate">
+        <div class="mb-3 customInput">
+          <label class="form-label">Fecha:</label>
+          <input type="date" class="form-control" formControlName="date">
+        </div>
+        <div class="mb-3 customInput">
+          <label class="form-label">Hora:</label>
+          <input type="time" class="form-control" formControlName="hour">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Titulo de cita:</label>
+        <textarea class="form-control" rows="1" formControlName="Title"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Observación:</label>
+        <textarea class="form-control" rows="4" formControlName="Text"></textarea>
+      </div>
+  <p><strong>Tienes una cita con el Doctor:</strong> {{person}}</p>
+  <p></p>
+  <img src="assets/img/doctor-default.jpg" class="img-responsive avatar border-gray image tamañoImage"/>
+      <div class="customButtonAccions">
+        <button class="btn btn-danger customButton" (click)="close()">Salir</button>
+      </div>
+    
+    </form>
+  </div>
+</div>
+
+<!-- DISEÑO DE MODAL PARA VER LA INFORMACIÒN DE UNA CITA PARA DOCTOR -->
+<div *ngIf="viewAppoinmentDoctor" class="customCard">
+  <h2 mat-dialog-title class="customTitle">{{TitleOnlyForm}}</h2>
+  <div mat-dialog-content>
+    <form [formGroup]="ModalForm">
+      <div class="customFormDate">
+        <div class="mb-3 customInput">
+          <label class="form-label">Fecha:</label>
+          <input type="date" class="form-control" formControlName="date">
+        </div>
+        <div class="mb-3 customInput">
+          <label class="form-label">Hora:</label>
+          <input type="time" class="form-control" formControlName="hour">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Titulo de cita:</label>
+        <textarea class="form-control" rows="1" formControlName="Title"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Observación:</label>
+        <textarea class="form-control" rows="4" formControlName="Text"></textarea>
+      </div>
+  <p><strong>Tienes una cita con el Paciente:</strong> {{person}}</p>
+      <div class="customButtonAccions">
+        <button class="btn btn-danger customButton" (click)="close()">Salir</button>
+      </div>
+    
+    </form>
+  </div>
+</div>
+
+<!-- DISEÑO DE MODAL PARA CREAR LA INFORMACIÒN DE UN ODONTOGRAMA -->
+<div *ngIf="createOdontogram" class="customCard">
+  <h2 mat-dialog-title class="customTitle">{{TitleOnlyForm}}</h2>
+  <div mat-dialog-content>
+    <form [formGroup]="ModalForm">
+      <div class="mb-3">
+        <label class="form-label">Observación:</label>
+        <textarea class="form-control customTextArea" rows="3" formControlName="observacion"></textarea>
+      </div>
+      <div class="container">
+        <div class="customSelect">
+          <h4>Seleccione un Procedimiento</h4>
+          <mat-form-field appearance="fill">
+            <mat-label>Procedimientos</mat-label>
+            <mat-select name="typeProcessId" formControlName="typeProcessId">
+              <mat-option>Ninguno</mat-option>
+              <mat-option *ngFor="let procedimiento of procedimientos" [value]="procedimiento.id">
+                {{procedimiento.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="customButtonAccions">
+        <button type="submit" [disabled]="ModalForm.invalid" class="btn btn-success customButton"
+          (click)="onSubmitForm('createOdontogram')">Guardar</button>
+        <button class="btn btn-danger customButton" (click)="close()">Cancelar</button>
+        <button type="submit" [disabled]="ModalForm.invalid" class="btn btn-success customButton customButtonClear"
+          (click)="onSubmitForm('createOdontogram')">Limpiar Registros</button>
+      </div>
+      <!-- <div class="customButtonAccions">
+        <button type="submit" class="btn btn-primary customButton customButtonSubmit" (click)="onSubmitForm('editOdontogram')">Actualizar</button>
+        <button class="btn btn-danger customButton" (click)="onSubmitForm('delete')">Eliminar</button>
+      </div> -->
+    </form>
+  </div>
+</div>
+
+<!-- DISEÑO DE MODAL PARA ELIMINAR O ACTUALIZAR LA INFORMACIÒN DE UN ODONTOGRAMA -->
+<div *ngIf="editOdontogram" class="customCard">
+  <h2 mat-dialog-title class="customTitle">{{TitleOnlyForm}}</h2>
+  <div mat-dialog-content>
+    <form [formGroup]="ModalForm">
+      <div class="mb-3">
+        <label class="form-label">Observación:</label>
+        <textarea class="form-control customTextArea" rows="3" formControlName="observacion"></textarea>
+      </div>
+      <div class="divTable">
+        <div class="divTableBody">
+          <div class="divTableRow">
+            <div class="divTableCell">
+              <h4>Seleccione un Procedimiento</h4>
+              <mat-form-field appearance="fill">
+                <mat-label>Procedimientos</mat-label>
+                <mat-select name="typeProcessId" formControlName="typeProcessId">
+                  <mat-option>Ninguno</mat-option>
+                  <mat-option *ngFor="let procedimiento of procedimientos" [value]="procedimiento.id">
+                    {{procedimiento.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="customButtonAccions">
+        <button type="submit" class="btn btn-primary customButton customButtonSubmit"
+          (click)="onSubmitForm('editOdontogram')">Actualizar</button>
+        <button class="btn btn-danger customButton" (click)="onSubmitForm('delete')">Eliminar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- DISEÑO DE MODAL PARA ASIGNAR ROLES A USUARIO EN EL APLICATIVO LA INFORMACIÒN DE UN ODONTOGRAMA -->
+<div *ngIf="status" class="customCard">
+  <h2 mat-dialog-title class="customTitle">{{title}}</h2>
+  <div mat-dialog-content>
+    <form [formGroup]="ModalForm">
+      <h3>¿Esta seguro que desea cambiar el estado del usuario {{user}} ?</h3>
+      <hr>
+      <P>Por favor escriba <strong>{{user}}</strong> para Confirmar</P>
+      <div class="mb-3">
+        <input type="text" class="form-control customInputFile" (input)="validatorRead($event)"
+          [ngStyle]="{'border': cssBorder}">
+      </div>
+      <div class="customButtonAccions">
+        <button class="btn btn-danger customButton" (click)="close()">Cancelar</button>
+        <button type="submit" [disabled]="disabled" class="btn btn-success customButton"
+          (click)="onSubmitForm('status')">Confirmar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- DISEÑO DE MODAL PARA ASIGNAR ROLES A USUARIO EN EL APLICATIVO LA INFORMACIÒN DE UN ODONTOGRAMA -->
+<div *ngIf="newUser" class="customCard">
+  <h2 mat-dialog-title class="customTitle">{{title}}</h2>
+  <div mat-dialog-content>
+    <form [formGroup]="ModalForm">
+      <div class="mb-3">
+        <h3>Para aceptar al usuario {{user}} primero debes asignarle un perfil para su ingreso</h3>
+        <select class="form-select" formControlName="rolname" (click)="validatorRole($event)">
+          <option value="" disabled selected hidden>Seleciona un perfil</option>
+          <option *ngFor="let role of roles" value="{{role.name}}">{{role.name}}</option>
+        </select>
+      </div>
+      <hr>
+      <P>Por favor escriba <strong>{{user}}</strong> para Confirmar</P>
+      <div class="mb-3">
+        <input type="text" class="form-control customInputFile" value="{{user}}" (input)="validatorRead($event)"
+          [ngStyle]="{'border': cssBorder}" formControlName="email">
+      </div>
+      <div class="customButtonAccions">
+        <button class="btn btn-danger customButton" (click)="close()">Cancelar</button>
+        <button type="submit" [disabled]="disabled" [disabled]="disabledRole" class="btn btn-success"
+          (click)="onSubmitForm('newUser')">Confirmar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- DISEÑO DE MODAL PARA EDITAR UNICAMENTE LA OBSERVACION LOS REGISTROS DE ODONTOGRAMA-->
+<div *ngIf="odontogramRegister" class="customCard">
+  <div mat-dialog-content>
+    <form [formGroup]="ModalForm">
+      <div class="mb-3">
+        <strong>
+          <label for="exampleFormControlTextarea1" class="form-label">Observación: </label>
+          <label for="exampleFormControlTextarea1" class="form-label countInput"> {{count}} caracteres de 30
+            mínimo</label></strong>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" formControlName="observation"
+          (input)="countChart($event)"></textarea>
+      </div>
+      <div class="customButtonAccions">
+        <button class="btn btn-danger customButton" (click)="close()">Cancelar</button>
+        <button type="submit" class="btn btn-success" [disabled]="ModalForm.invalid"
+          (click)="onSubmitForm('odontogramRegister')">Confirmar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- DISEÑO DE MODAL PARA VER UN USUARIO DE LA LISTA DE USUARIOS Y PODER EDITARLO LA OBSERVACION LOS REGISTROS DE ODONTOGRAMA-->
+<div *ngIf="listUsers" class="customCard"></div>
+<div mat-dialog-content>
+  <form [formGroup]="ModalForm">
+    <div class="row form-group" *ngFor="let detail of detailsUser">
+      <div class="col-md-3">
+        <div class="author">
+          <fieldset class="form-group">
+            <!-- <img class="avatar border-gray image" src="assets/img/mike.jpg" alt="..."> -->
+            <!-- <input type="file" (change)="fileChangeEvent($event)"  class="form-control " formControlName="imagenPerfil"> -->
+            {{imageError}}
+            <div class="custom-file fileInputProfileWrap">
+              <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile" formControlName="imagenPerfil">
+                <div class="img-space">
+                    <ng-container *ngIf="isImageSaved; else elseTemplate">
+                        <img src="{{cardImageBase64}}" class="img-responsive avatar border-gray image"
+                        matTooltip="Click Aqui para cambiar la imagen"
+                          aria-label="Button that displays a tooltip when focused or hovered over" />
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        <img src="{{imagenDashboard || template}}" class="img-responsive avatar border-gray image" 
+                        matTooltip="Click Aqui para cambiar la imagen"
+                        aria-label="Button that displays a tooltip when focused or hovered over"/>
+                    </ng-template>
+                </div>
+                <a class="btn btn-danger" (click)="removeImage()" *ngIf="isImageSaved">Remover</a>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="card card-user">
+          <div class="card-header">
+            <h3 class="card-title">Perfil de usuario</h3>
+          </div>
+          <div class="card-body">
+            <mat-stepper orientation="vertical">
+              <mat-step label="Información General">
+                <div class="row">
+                  <div class="col-md-4 pl-1">
+                    <div class="form-group">
+                      <label>Nombre completo</label>
+                      <input type="text" class="form-control" placeholder="Nombre completo" formControlName="fullName" [value]="detail.fullName">
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-1">
+                    <div class="form-group">
+                      <label>Usuario</label>
+                      <input type="text"  class="form-control" placeholder="Usuario" formControlName="UserName" [value]="detail.username">
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-1">
+                    <div class="form-group">
+                      <label>Fecha de Nacimiento</label>
+                      <input type="date" class="form-control" placeholder="Ej: 10/12/2021" formControlName="dateBirth" [value]="detail.dateBirth">
+                    </div>
+                  </div>
+                  <mat-form-field appearance="fill" class="col-md-3 pl-1">
+                    <mat-label>Tipos de documento</mat-label>
+                    <mat-select name="typeDocumentId" formControlName="typeDocumentId">
+                      <mat-option>Ninguno</mat-option>
+                      <mat-option *ngFor="let tipo of tipoDocumentos" [value]="tipo.id">
+                        {{tipo.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div class="col-md-4 pl-1">
+                    <div class="form-group">
+                      <label>Num documento</label>
+                      <input type="text" class="form-control" placeholder="Ej: 1144789032" formControlName="document"
+                        [value]="detail.document">
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-1">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Correo electronico</label>
+                      <input type="text" class="form-control" placeholder="Email" formControlName="Email"
+                        [value]="detail.email">
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-1">
+                    <div class="form-group">
+                      <label>Num Contacto</label>
+                      <input type="text" class="form-control" placeholder="Ej: 3165488574" formControlName="PhoneNumber"
+                        [value]="detail.phoneNumber">
+                    </div>
+                  </div>
+                  <div class="col-md-5">
+                    <div class="form-group">
+                      <label>Dirección de Residencia</label>
+                      <input type="text" class="form-control" placeholder="Ej: Cll 4B #87-2" formControlName="address"
+                        [value]="detail.address">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label>Ciudad</label>
+                      <input type="text" class="form-control" placeholder="Ej: Cali" formControlName="city"
+                        [value]="detail.city">
+                    </div>
+                  </div>
+                </div>
+              </mat-step>
+              <mat-step label="Información de Emergencia">
+                <div class="row">
+                  <div class="col-md-4 px-1">
+                    <div class="form-group">
+                      <label>Nombre</label>
+                      <input type="text" class="form-control" placeholder="Ej: Jose Luis Montaño"
+                        formControlName="contactEmergency" [value]="detail.contactEmergency">
+                    </div>
+                  </div>
+                  <div class="col-md-4 pr-1">
+                    <div class="form-group">
+                      <label>Num de emergencia</label>
+                      <input type="text" class="form-control" placeholder="Ej: 3167547458"
+                        formControlName="phoneEmergency" [value]="detail.phoneEmergency">
+                    </div>
+                  </div>
+                  <div class="col-md-4 px-1">
+                    <div class="form-group">
+                      <label>Dirección Contacto</label>
+                      <input type="text" class="form-control" placeholder="Ej: cll 4b #85-4"
+                        formControlName="addresContact" [value]="detail.addresContact">
+                    </div>
+                  </div>
+                  <div class="col-md-4 px-1">
+                    <div class="form-group">
+                      <label>Centro de emergencia</label>
+                      <input type="text" class="form-control" placeholder="Nueva eps Sede capitolio"
+                        formControlName="centerEmergency" [value]="detail.centerEmergency">
+                    </div>
+                  </div>
+                </div>
+              </mat-step>
+              <mat-step label="Información Medica">
+                <div class="row">
+                  <div class="col-md-4 pl-1">
+                    <div class="form-group">
+                      <label>Eps</label>
+                      <input type="text" class="form-control" placeholder="Ej: Coomeva eps" formControlName="eps"
+                        [value]="detail.eps">
+                    </div>
+                  </div>
+                  <div class="col-md-2 pl-1">
+                    <div class="form-group">
+                      <label>Altura</label>
+                      <input type="text" class="form-control" placeholder="Ej: 180" formControlName="height"
+                        [value]="detail.height">
+                    </div>
+                  </div>
+                  <div class="col-md-2 pl-1">
+                    <div class="form-group">
+                      <label>Peso</label>
+                      <input type="text" class="form-control" placeholder="Ej: 90" formControlName="weight"
+                        [value]="detail.weight">
+                    </div>
+                  </div>
+                  <div class="col-md-2 pl-1">
+                    <div class="form-group">
+                      <label>Sangre</label>
+                      <input type="text" class="form-control" placeholder="Ej: O" formControlName="bloodType"
+                        [value]="detail.bloodType">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-2 pl-1">
+                      <div class="form-group">
+                        <label>rh</label>
+                        <input type="text" class="form-control" placeholder="Ej: +" formControlName="rh"
+                          [value]="detail.rh">
+                      </div>
+                    </div>
+                    <div class="col-md-2 pl-1">
+                      <div class="form-group">
+                        <label>Genero</label>
+                        <input type="text" class="form-control" placeholder="Ej: M" formControlName="gender"
+                          [value]="detail.gender">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-step>
+            </mat-stepper>
+            <div class="row">
+              <div class="customButtonAccions">
+                <button type="submit" class="btn btn-primary btn-round" [disabled]="ModalForm.invalid"
+                  (click)="onSubmitForm('listUsers')">Actualizar Información</button>
+                <button class="btn btn-danger btn-round" (click)="close()">Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

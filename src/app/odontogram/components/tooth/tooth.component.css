@@ -1,0 +1,34 @@
+.customText{
+  font-weight: 500;
+  padding-left: 40%;
+}
+.customPositionTooth{
+  writing-mode: horizontal-tb;
+}
+.container {
+    display: grid;
+    grid-template-columns: 15px 15px 15px;
+    grid-template-rows: 15px 15px 15px;
+    gap: 0px 0px;
+    /* grid-auto-flow: row; */
+    grid-template-areas:
+      ". top ."
+      "left center right"
+      ". buttom .";
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+  }
+  
+  .center { grid-area: center; }
+  
+  .top { grid-area: top; }
+  
+  .left { grid-area: left; }
+  
+  .right { grid-area: right; }
+  
+  .buttom { grid-area: buttom;}
+
+  

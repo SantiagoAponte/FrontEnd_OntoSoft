@@ -1,0 +1,112 @@
+<!-- Todo lo relacionado con login -->
+<meta charset="UTF-8" />
+<img class="imgson" src="/assets/Sonrisa.jpg" alt="" />
+<div class="cover">
+    <div class="login-page">
+        <div class="head">
+            <img class="imgont" src="/assets/LogoOnto.png" alt="" />
+            <p class="text-center">
+                Un software que cuenta con los servicios pensados para tu facilidad y
+                optimizaci&oacute;n de tu cl&iacute;nica Odontolog&iacute;ca.
+            </p>
+            <p class="text-center" style="font-style: italic">
+                "La sonrisa es una bienvenida universal, es un deber cuidar de ella."
+                Max Eastman
+            </p>
+        </div>
+        <div class="content">
+            <mat-card class="mat-elevation-z12">
+                <mat-card-title style="text-align: center"></mat-card-title>
+                <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+                    <!-- Inicio Inicio Sesion -->
+                    <mat-tab label="Inicio sesion">
+                        <mat-card-content>
+                            <form [formGroup]="formLogin" (submit)="send()">
+                                <!-- Campo de correo electronico-->
+                                <mat-form-field>
+                                    <input matInput placeholder="Correo" formControlName="email" />
+                                    <mat-error>Correo obligatorio</mat-error>
+                                    <mat-icon matSuffix>email</mat-icon>
+                                </mat-form-field>
+                                <!-- Fin Campo de correo electronico -->
+                                <!-- Inicio Campo de Contrase�a -->
+                                <mat-form-field>
+                                    <input matInput placeholder="Contrase&ntilde;a" type="password"
+                                        formControlName="password" />
+                                    <mat-error>
+                                        Contrase&ntilde;a obligatoria,Debe incluir una mayuscula
+                                        <div>8 caracteres y un caracter especial</div>
+                                    </mat-error>
+                                    <mat-icon matSuffix>lock</mat-icon>
+                                </mat-form-field>
+                                <!-- Fin Campo de Contrase�a -->
+                                <button type="submit" mat-raised-button color="primary" class="login-button"
+                                    [disabled]="formLogin.invalid">
+                                    Iniciar Sesion
+                                </button>
+                                <a class="text-center" href="/missing">&iquest;Olvidaste tu contrase&ntilde;a?</a>
+                                <div>
+                                    <a class="text-left" href="https://firebasestorage.googleapis.com/v0/b/repositorio-ontosoft.appspot.com/o/Terminos%20y%20condiciones%20-%20OntoSoft.pdf?alt=media&token=47a42e19-ff41-4f85-9704-cc1404f7076d">Terminos y condiciones</a>
+                                
+                                    <a class="text-right" href="https://firebasestorage.googleapis.com/v0/b/repositorio-ontosoft.appspot.com/o/Politica%20de%20privacidad%20ontosoft.pdf?alt=media&token=ea1aabe2-e717-4d7e-8fc3-e22e262218e0">Politica de privacidad   </a>
+            
+                                </div>
+                                <div>
+                                    <a href="https://firebasestorage.googleapis.com/v0/b/repositorio-ontosoft.appspot.com/o/Tratamiento%20de%20datos%20-%20OntoSoft.pdf?alt=media&token=e4878d12-82ff-4c97-8351-3bcf2a888d75">Tratamiento de datos</a>
+                                </div>
+                            </form>
+                        </mat-card-content>
+                    </mat-tab>
+                    <!-- Fin Inicio Sesion -->
+                    <!-- Inicio Registrate -->
+                    <mat-tab label="Registro">
+                        <mat-card-content>
+                            <form [formGroup]="formRegister" (submit)="sendRegister()">
+                                <!-- Inicio Usuario -->
+                                <mat-form-field>
+                                    <input matInput placeholder="Usuario" formControlName="username" />
+                                    <mat-icon matSuffix>perm_identity</mat-icon>
+                                    <mat-error> Usuario obligatorio </mat-error>
+                                </mat-form-field>
+                                <!-- Fin Usuario -->
+                                <!-- Inicio Correo -->
+                                <mat-form-field>
+                                    <input matInput placeholder="Correo" formControlName="email" />
+                                    <mat-error>Correo obligatorio</mat-error>
+                                    <mat-icon matSuffix>email</mat-icon>
+                                </mat-form-field>
+                                <!-- Fin Correo -->
+                                <!-- Inicio Contrase�a -->
+                                <mat-form-field>
+                                    <input matInput placeholder="Contrase&ntilde;a" type="password"
+                                        formControlName="password1" />
+                                    <mat-error>
+                                        Contrase&ntilde;a obligatoria,Debe incluir una mayuscula
+                                        <div>8 caracteres y un caracter especial</div>
+                                    </mat-error>
+                                    <mat-icon matSuffix>lock</mat-icon>
+                                </mat-form-field>
+                                <!-- Fin Campo de Contrase�a -->
+                                <mat-form-field>
+                                    <input matInput placeholder="Ingrese nuevamente la contrase&ntilde;a"
+                                        type="password" formControlName="password2" />
+                                    <mat-error>
+                                        Contrase&ntilde;a obligatoria,Debe incluir una mayuscula
+                                        <div>8 caracteres y un caracter especial</div>
+                                    </mat-error>
+                                    <mat-icon matSuffix>lock</mat-icon>
+                                </mat-form-field>
+                                <!-- Fin Campo de Contrase�a -->
+                                <button mat-raised-button color="primary" class="login-button"
+                                    [disabled]="formRegister.invalid" type="submit" (click)="search()">
+                                    Registrarme
+                                </button>
+                            </form>
+                            <!-- Fin Registrate -->
+                        </mat-card-content>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card>
+        </div>
+    </div>
+</div>
